@@ -1,8 +1,7 @@
 #include "matmul.h"
 
 // Parallel version of mmul2 (loop order i, k, j).
-// Each thread handles a block of rows of C, so no two threads write the same
-// element and no synchronization is needed inside the loops.
+
 void mmul(const float *A, const float *B, float *C, const std::size_t n) {
     #pragma omp parallel for
     for (std::size_t i = 0; i < n*n; i++) {

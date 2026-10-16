@@ -16,8 +16,7 @@ static void insertion_sort(int *arr, std::size_t n) {
 }
 
 // Sorts arr[0, n) in place, using tmp[0, n) as scratch space for merging.
-// The left half is sorted in a new task while the current thread sorts the
-// right half; the two halves touch disjoint parts of arr and tmp.
+// The left half is sorted in a new task while the current thread sorts the right half
 static void msort_rec(int *arr, int *tmp, std::size_t n, std::size_t threshold) {
     if (n < threshold || n < 2) {
         insertion_sort(arr, n);

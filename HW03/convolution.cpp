@@ -18,7 +18,6 @@ static float pixel(const float *image, std::size_t n, long i, long j) {
 }
 
 // Parallel version of convolve from HW02.
-// g[x, y] = sum_{i,j} w[i, j] * f[x + i - (m-1)/2, y + j - (m-1)/2]
 // Each thread handles a block of rows of the output, so no two threads write
 // the same element and no synchronization is needed inside the loops.
 void convolve(const float *image, float *output, std::size_t n,
