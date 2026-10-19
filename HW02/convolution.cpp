@@ -36,3 +36,6 @@ void convolve(const float *image, float *output, std::size_t n,
         }
     }
 }
+
+
+// added a comment for git fetch
