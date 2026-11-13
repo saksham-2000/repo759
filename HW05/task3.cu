@@ -34,6 +34,11 @@ int main(int argc, char **argv) {
 
   unsigned int numBlocks = (n + threadsPerBlock - 1) / threadsPerBlock;
 
+  // Warm-up launch (n = 0, does no work): the first launch in a process pays
+  // one-time module-loading cost, which would otherwise land in the timing.
+  vscale<<<1, 1>>>(dA, dB, 0);
+  cudaDeviceSynchronize();
+
   cudaEvent_t start, stop;
   cudaEventCreate(&start);
   cudaEventCreate(&stop);
